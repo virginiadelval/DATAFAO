@@ -16,53 +16,37 @@ var baseLayers = [
 // Grupos de capas interactivas
 var overlayMaps = [
 	{
-		group: "Jurisdicciones",
+		group: "Datos Anuales (mm)",
 		collapsed: true,
 		layers: [
 			{
 				active: false,
-				name: "Regiones",
-				layer: REFIONESFAO,
+				name: "Histórico (mm)",
+				layer: grillaHistorico,
 				transparent: true,
 				opacity: 0.5,
 			}, {
 				active: false,
-				name: "Provincias",
-				layer: PROVFAO,
+				name: "Proyectado (mm)",
+				layer: grillaProyeccion,
 				transparent: true,
 				opacity: 0.5,
 			},
-			// 
-			// {
-			// 	active: false,
-			// 	name: "Localidades Censales",
-			// 	layer: Localidad,
-			// 	transparent: true,
-			// 	opacity: 0.5,
-			// },
-			// {
-			// 	active: false,
-			// 	name: "Parajes",
-			// 	layer: Parajes,
-			// 	transparent: true,
-			// 	opacity: 0.5,
-			// },
-
-
+			
 		]
 	},
-	// {
-	// 	group: "Info Censal - INDEC",
-	// 	collapsed: true,
-	// 	layers: [
+	{
+		group: "Datos Mensuales (mm) ",
+		collapsed: true,
+		layers: [
 
-	// 		{
-	// 			active: false,
-	// 			name: "Datos Censales (2022)",
-	// 			layer: DataCenso,
-	// 			transparent: true,
-	// 			opacity: 0.5,
-	// 		},
+			{
+				active: false,
+				name: "Datos Mensuales ",
+				layer: grillaMensual,
+				transparent: true,
+				opacity: 0.5,
+			},
 	// 		{
 	// 			active: false,
 	// 			name: "Pobl. con NBI (2010)",
@@ -78,8 +62,8 @@ var overlayMaps = [
 	// 			opacity: 0.5,
 	// 		},
 
-	// 	]
-	// }
+		]
+	}
 
 
 ];

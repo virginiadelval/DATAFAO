@@ -71,27 +71,14 @@
 
 
 	<!-- en la Carpeta DATA estan los js como capas-->
-	<!-- <script type="text/javascript" src="data/fao/naf.js"></script>
-	<script type="text/javascript" src="data/fao/proyectos.js"></script>
-	<script type="text/javascript" src="data/fao/poblacion22.js"></script>
-	<script type="text/javascript" src="data/fao/loccensal22.js"></script>
-	<script type="text/javascript" src="data/fao/parajesign.js"></script>
-	<script type="text/javascript" src="data/fao/arsenico_j.js"></script>
-	<script type="text/javascript" src="data/fao/nbi_dpto.js"></script>
-	<script type="text/javascript" src="data/fao/pobindigena2021.js"></script>
-	<script type="text/javascript" src="data/fao/wmsing.js"></script>
-	<script type="text/javascript" src="data/fao/regiones_hidrogeoloicas.js"></script>
-	<script type="text/javascript" src="data/fao/cuencas_sistemas.js"></script>
-	<script type="text/javascript" src="data/fao/agua_red_j.js"></script>
-	<script type="text/javascript" src="data/fao/sitios_j.js"></script>
-	<script type="text/javascript" src="data/fao/esmn_j.js"></script>
-	<script type="text/javascript" src="data/fao/suelos_j.js"></script>
-	<script type="text/javascript" src="data/fao/ecoregion_j.js"></script> -->
+	
 	<script type="text/javascript" src="data/fao/proviciasFAO.js"></script>
-	<script type="text/javascript" src="data/fao/regiones.js"></script>
-
-	<script type="text/javascript" src="data/fao/grillaID.js"></script>
+	<!-- <script type="text/javascript" src="data/fao/grillaID.js"></script> -->
+	<script type="text/javascript" src="data/fao/proyeccion.js"></script>
+	<script type="text/javascript" src="data/fao/mensual.js"></script>
+	<script type="text/javascript" src="data/fao/historico.js"></script>
 	<!-- <script type="text/javascript" src="js/ppmtemp.js"></script> -->
+
 
 
 	<script type="text/javascript" src="js/mapa.js"></script>
@@ -359,6 +346,12 @@
 		<nav class="nav-links">
 			<!-- <a href="#">Home</a> -->
 			<div class="dropdown">
+				<a href="#">DATA <span>&#9662;</span></a>
+				<div class="dropdown-content">
+					<a href="https://virginiadelval.github.io/DATAFAO/">Precipitación</a>
+					</div>
+			</div>
+			<div class="dropdown">
 				<a href="#">NOA <span>&#9662;</span></a>
 				<div class="dropdown-content">
 					<a href="https://virginiadelval.github.io/FAOC/">Catamarca</a>
@@ -382,36 +375,14 @@
 
 		//mapa//
 		var map = L.map('map', {
-			center: [-41.39, -65.34],
-			zoom: 4,
+			center: [-26.80364223253595, -65.33587134356989],
+			zoom: 6,
 			zoomControl: false,
-			layers: [argenmap, REFIONESFAO]
+			layers: [argenmap, PROVFAO]
 		});
 
 
-		// Insertando buscador
-		// var title = L.control();
-		// title.onAdd = function (map) {
-		// 	var div = L.DomUtil.create('div', 'info');
-		// 	div.innerHTML +=
-		// 		'<h2>Buscador <br>de parajes</h2> ';
-		// 	div.style.width = '20vh', // vh para que sea responsive
-		// 	div.style.height = 'auto'; // auto para que sera responsive
-		// 	return div;
-		// };
-		// title.addTo(map);
-
-		// // //buscador de datos. Solo para datos que sean json o geojson
-		// var searchControl = new L.Control.Search({
-		// 	layer: Localidad,
-		// 	propertyName: 'fna',
-		// 	circleLocation: false,
-		// 	position: 'topright',
-		// 	collapsed: true
-		// });
-		// map.addControl(searchControl);
-
-		// map.removeLayer(Parajes);
+		
 		//geolocalizacion
 		function buscarLocalizacion(e) {
 			L.marker(e.latlng).addTo(map);
@@ -482,24 +453,7 @@
 		map.addControl(panelLayers);
 		map.addControl(panelLayers1);
 
-		// map.addControl(panelLayers3);
-		//map.addControl(panelLayers4);
-		//map.addControl(panelLayers2);
-		// map.addControl(panelLayers7);
-		// map.addControl(panelLayersClimatico);
-		//	map.addControl(panelLayers5);
 
-
-
-		// Llamada a la función para crear la leyenda
-		createLegendRegiones();
-
-		// map.addControl(htmlLegend1and6);
-
-
-
-
-		// map.addControl(panelLayers6);
 		L.control.scale({ position: 'bottomleft', imperial: false }).addTo(map);
 	</script>
 
