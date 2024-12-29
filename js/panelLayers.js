@@ -17,17 +17,17 @@ var baseLayers = [
 var overlayMaps = [
 	{
 		group: "Datos Anuales (mm)",
-		collapsed: true,
+		collapsed: false,
 		layers: [
 			{
 				active: false,
-				name: "Histórico (mm)",
+				name: "Históricos (mm)",
 				layer: grillaHistorico,
 				transparent: true,
 				opacity: 0.5,
 			}, {
 				active: false,
-				name: "Proyectado (mm)",
+				name: "Proyectados (mm)",
 				layer: grillaProyeccion,
 				transparent: true,
 				opacity: 0.5,
@@ -37,13 +37,13 @@ var overlayMaps = [
 	},
 	{
 		group: "Datos Mensuales (mm) ",
-		collapsed: true,
+		collapsed: false,
 		layers: [
 
 			{
 				active: false,
 				name: "Datos Mensuales ",
-				layer: grillaMensual,
+				layer: GrillaMensual,
 				transparent: true,
 				opacity: 0.5,
 			},
