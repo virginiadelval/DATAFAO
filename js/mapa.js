@@ -28,3 +28,45 @@ var PROVFAO = L.geoJSON(provinciasFAO, {
 	
 });
 
+var Parajes = L.geoJSON(parajes, {
+	// pointToLayer: function (feature, latlng) {
+	// 	return L.circleMarker(latlng, IconLocSec);
+	// },
+	// onEachFeature: function (feature, layer) {
+	// 	var content = popupContentLocSec(feature);
+	// 	layer.bindPopup(content);
+	// }
+});
+
+
+
+var EstacionesSMN = L.geoJSON(SMN,
+	{
+		pointToLayer: function (feature, latlng) {
+			return L.circleMarker(latlng, MarkerOptionsSMN,
+			);
+
+		},
+ 	style: MarkerOptionsSMN,
+	 onEachFeature: function (feature, layer) {
+		var content = popupContentSMN(feature);
+		layer.bindPopup(content);
+	}
+		
+	}
+);
+var EstacionesINTA = L.geoJSON(ESMINTA,
+	{
+		pointToLayer: function (feature, latlng) {
+			return L.circleMarker(latlng, MarkerOptionsINTA,
+			);
+
+		},
+ 	style: MarkerOptionsINTA,
+	 onEachFeature: function (feature, layer) {
+		var content = popupContentINTA(feature);
+		layer.bindPopup(content);
+	}
+		
+	}
+);

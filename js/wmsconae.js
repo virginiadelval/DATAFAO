@@ -65,7 +65,7 @@ var panelLayers5 = new L.Control.PanelLayers(null, panelTransparecia, {
 compact: true,
 collapsed: false,
 collapsibleGroups: true,
-position: 'bottomright',
+position: 'topleft',
 // buildItem: function(item) {
 //   var $item = $('<div class="panel-layer-item">');
 //   var $label = $('<span>').text(item.name);
@@ -78,58 +78,51 @@ position: 'bottomright',
 
 
 
+    // Función para generar la leyenda
+function createLegendApiDiario() {
+    var legend = L.control({ position: 'bottomright' });
 
+    legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info legend');
+         div.innerHTML += '<h5>Indice de Precipitación Diario</h5><img src=" https://geoservicios2.conae.gov.ar:443/geoserver/EstatusHidrico/ows?service=WMS&request=GetLegendGraphic&format=image/png&width=20&height=20&layer=MHS_GPMIMERG_APIDIARIO_1&" alt="legend" width="60%" height="40%">';
+        return div;
+    };
 
+    // Función para mostrar/ocultar la leyenda
+    function toggleLegend() {
+        if (map.hasLayer(APIDiario)) {
+            legend.addTo(map);
+        } else {
+            legend.remove();
+        }
+    }
 
+// Eliminar la leyenda al inicio
+legend.remove();
+    // Escucha el cambio de estado de la capa
+    map.on('overlayadd overlayremove', toggleLegend);
+}
+// Función para generar la leyenda
+function createLegendApiPercentil() {
+    var legend = L.control({ position: 'bottomright' });
 
+    legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info legend');
+         div.innerHTML += '<h5>Indice de Precipitación Diario</h5><img src=" https://geoservicios2.conae.gov.ar:443/geoserver/EstatusHidrico/ows?service=WMS&request=GetLegendGraphic&format=image/png&width=20&height=20&layer=MHS_GPMIMERG_PCNTLAPI_7&" alt="legend" width="60%" height="40%">';
+        return div;
+    };
 
+    // Función para mostrar/ocultar la leyenda
+    function toggleLegend() {
+        if (map.hasLayer(APIPercentil)) {
+            legend.addTo(map);
+        } else {
+            legend.remove();
+        }
+    }
 
-
-    // // Función para generar la leyenda
-// function createLegendApiDiario() {
-//     var legend = L.control({ position: 'bottomright' });
-
-//     legend.onAdd = function (map) {
-//         var div = L.DomUtil.create('div', 'info legend');
-//          div.innerHTML += '<h5>Indice de Precipitación Diario</h5><img src=" https://geoservicios2.conae.gov.ar:443/geoserver/EstatusHidrico/ows?service=WMS&request=GetLegendGraphic&format=image/png&width=20&height=20&layer=MHS_GPMIMERG_APIDIARIO_1&" alt="legend" width="60%" height="40%">';
-//         return div;
-//     };
-
-//     // Función para mostrar/ocultar la leyenda
-//     function toggleLegend() {
-//         if (map.hasLayer(APIDiario)) {
-//             legend.addTo(map);
-//         } else {
-//             legend.remove();
-//         }
-//     }
-
-// // Eliminar la leyenda al inicio
-// legend.remove();
-//     // Escucha el cambio de estado de la capa
-//     map.on('overlayadd overlayremove', toggleLegend);
-// }
-// // Función para generar la leyenda
-// function createLegendApiPercentil() {
-//     var legend = L.control({ position: 'bottomright' });
-
-//     legend.onAdd = function (map) {
-//         var div = L.DomUtil.create('div', 'info legend');
-//          div.innerHTML += '<h5>Indice de Precipitación Diario</h5><img src=" https://geoservicios2.conae.gov.ar:443/geoserver/EstatusHidrico/ows?service=WMS&request=GetLegendGraphic&format=image/png&width=20&height=20&layer=MHS_GPMIMERG_PCNTLAPI_7&" alt="legend" width="60%" height="40%">';
-//         return div;
-//     };
-
-//     // Función para mostrar/ocultar la leyenda
-//     function toggleLegend() {
-//         if (map.hasLayer(APIPercentil)) {
-//             legend.addTo(map);
-//         } else {
-//             legend.remove();
-//         }
-//     }
-
-// // Eliminar la leyenda al inicio
-// legend.remove();
-//     // Escucha el cambio de estado de la capa
-//     map.on('overlayadd overlayremove', toggleLegend);
-// }
+// Eliminar la leyenda al inicio
+legend.remove();
+    // Escucha el cambio de estado de la capa
+    map.on('overlayadd overlayremove', toggleLegend);
+}

@@ -12,7 +12,7 @@ var baseLayers = [
 		name: "Google Satelite",
 		layer: google
 	}];
-// Grupos de capas interactivas
+
 // Grupos de capas interactivas
 var overlayMaps = [
 	{
@@ -47,24 +47,31 @@ var overlayMaps = [
 				transparent: true,
 				opacity: 0.5,
 			},
-	// 		{
-	// 			active: false,
-	// 			name: "Pobl. con NBI (2010)",
-	// 			layer: NBI,
-	// 			transparent: true,
-	// 			opacity: 0.5,
-	// 		},
-	// 		{
-	// 			active: false,
-	// 			name: "Pobl. Originaria (2010)",
-	// 			layer: POBIndigena,
-	// 			transparent: true,
-	// 			opacity: 0.5,
-	// 		},
+		]
+	},
+	{
+	 group: "Estaciones Meteorólogicas ",
+		collapsed: false,
+		layers: [
+
+			{
+				active: false,
+				name: "Servicio Met. Nacional ",
+				layer: EstacionesSMN,
+				transparent: true,
+				opacity: 0.5,
+			},
+			{
+				active: false,
+				name: "Red INTA ",
+				layer: EstacionesINTA,
+				transparent: true,
+				opacity: 0.5,
+			},
 
 		]
 	}
-
+	
 
 ];
 //panel ambiental

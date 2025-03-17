@@ -82,6 +82,9 @@
 	<script type="text/javascript" src="data/fao/mensual.js"></script>
 	<script type="text/javascript" src="data/fao/historico.js"></script>
 	<!-- <script type="text/javascript" src="js/ppmtemp.js"></script> -->
+	<script type="text/javascript" src="data/fao/esmn.js"></script>
+	<script type="text/javascript" src="data/fao/esm_INTA.js"></script>
+	<script type="text/javascript" src="data/fao/parajesign.js"></script>
 
 
 <script type="text/javascript" src="js/graficopopus.js"></script>
@@ -100,7 +103,7 @@
 
 		#map {
 			width: 100%;
-			height: 100%;
+			height: 90%;
 			box-shadow: 5px 5px 5px #888;
 			position: relative;
 			z-index: 1;
@@ -382,13 +385,36 @@
 
 		//mapa//
 		var map = L.map('map', {
-			center: [-26.80364223253595, -65.33587134356989],
-			zoom: 6,
+			center: [-40.00364223253595, -65.33587134356989],
+			zoom: 4,
 			zoomControl: false,
-			layers: [argenmap, PROVFAO]
+			layers: [argenmap, PROVFAO, EstacionesSMN]
 		});
 
 
+	// Insertando buscador
+	var title = L.control();
+	title.onAdd = function (map) {
+		var div = L.DomUtil.create('div', 'info');
+		div.innerHTML +=
+			'<h2>Buscador <br>de parajes</h2> ';
+		div.style.width = '20vh', // vh para que sea responsive
+			div.style.height = 'auto'; // auto para que sera responsive
+		return div;
+	};
+	title.addTo(map);
+
+	// //buscador de datos. Solo para datos que sean json o geojson
+	var searchControl = new L.Control.Search({
+		layer: Parajes,
+		propertyName: 'fna',
+		circleLocation: false,
+		position: 'topright',
+		collapsed: true
+	});
+	map.addControl(searchControl);
+
+	map.removeLayer(Parajes);
 		
 		//geolocalizacion
 		function buscarLocalizacion(e) {
@@ -459,6 +485,12 @@
 		/// Paneles layer (js/panelLayer.js) en orden de aparicion
 		map.addControl(panelLayers);
 		map.addControl(panelLayers1);
+		map.addControl(panelLayers5);
+
+		createLegendSMN();
+		createLegendINTA();
+		createLegendApiPercentil();
+		
 
 
 		L.control.scale({ position: 'bottomleft', imperial: false }).addTo(map);
